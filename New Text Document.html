@@ -1,0 +1,2500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hartley Building Contractors — Fenwick · Church, Heritage &amp; General Building, Colne Valley</title>
+  <meta name="description"
+    content="Family building firm outside Fenwick since 1998. Church towers, listed buildings, renovations, new builds and fit-outs across the Colne Valley.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Archivo:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <noscript>
+    <style>
+      img {
+        opacity: 1 !important
+      }
+    </style>
+  </noscript>
+  <style>
+    /* ---------- foundations ---------- */
+    :root {
+      --navy: #10202F;
+      --navy-deep: #0B1622;
+      --navy-ink: #071019;
+      --cream: #F3EEE2;
+      --paper: #FAF7EF;
+      --brass: #C5A259;
+      --brass-deep: #8A6C33;
+      --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+      --sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    html,
+    body {
+      overflow-x: clip
+    }
+
+    body {
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--fg, #EAE4D3);
+      -webkit-font-smoothing: antialiased
+    }
+
+    svg {
+      display: block;
+      max-width: 100%
+    }
+
+    a {
+      color: inherit
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--brass);
+      outline-offset: 3px
+    }
+
+    ::selection {
+      background: var(--brass);
+      color: #10202F
+    }
+
+    /* section backgrounds + shared tone vars */
+    .bg-navy {
+      background: var(--navy);
+      --secbg: var(--navy);
+      --fg: #EAE4D3;
+      --fg-soft: #B9B2A0;
+      --hair: rgba(234, 228, 211, .16);
+      --accent: #C5A259
+    }
+
+    .bg-deep {
+      background: var(--navy-deep);
+      --secbg: var(--navy-deep);
+      --fg: #EAE4D3;
+      --fg-soft: #B9B2A0;
+      --hair: rgba(234, 228, 211, .16);
+      --accent: #C5A259
+    }
+
+    .bg-cream {
+      background: var(--cream);
+      --secbg: var(--cream);
+      --fg: #242930;
+      --fg-soft: #57534A;
+      --hair: rgba(36, 41, 48, .16);
+      --accent: #8A6C33
+    }
+
+    .bg-paper {
+      background: var(--paper);
+      --secbg: var(--paper);
+      --fg: #242930;
+      --fg-soft: #57534A;
+      --hair: rgba(36, 41, 48, .16);
+      --accent: #8A6C33
+    }
+
+    .bg-ink {
+      background: var(--navy-ink);
+      --secbg: var(--navy-ink);
+      --fg: #EAE4D3;
+      --fg-soft: #B9B2A0;
+      --hair: rgba(234, 228, 211, .16);
+      --accent: #C5A259
+    }
+
+    /* faint paper grain on every section */
+    .bg-navy,
+    .bg-deep,
+    .bg-cream,
+    .bg-paper,
+    .bg-ink {
+      position: relative;
+      isolation: isolate
+    }
+
+    .bg-navy::before,
+    .bg-deep::before,
+    .bg-cream::before,
+    .bg-paper::before,
+    .bg-ink::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    .bg-cream::before,
+    .bg-paper::before {
+      opacity: .035
+    }
+
+    .wrap {
+      width: min(1140px, 100% - clamp(2.4rem, 7vw, 5.5rem));
+      margin-inline: auto
+    }
+
+    section {
+      padding-block: clamp(3.6rem, 8.5vw, 6.8rem);
+      scroll-margin-top: 84px
+    }
+
+    /* ---------- photography: one consistent treatment ---------- */
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: sepia(.15) saturate(.88) contrast(1.04) brightness(.97);
+      opacity: 0;
+      transition: opacity .5s ease, filter .5s ease
+    }
+
+    img.loaded {
+      opacity: 1
+    }
+
+    img.failed {
+      visibility: hidden
+    }
+
+    .photo:hover img,
+    .filmstrip figure:hover img,
+    .interlude:hover img {
+      filter: sepia(0) saturate(1) contrast(1.02)
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      img {
+        transition: none
+      }
+    }
+
+    /* every image sits on a "slot" — the pencil-rule mark shows while loading / if an image fails */
+    .ph-img {
+      position: relative;
+      overflow: hidden;
+      background-color: rgba(36, 41, 48, .07);
+      background-image: linear-gradient(to top right, transparent calc(50% - .5px), rgba(36, 41, 48, .13) 50%, rgba(36, 41, 48, .13) calc(50% + .5px), transparent calc(50% + .5px))
+    }
+
+    .slotbg-d {
+      background-color: rgba(234, 228, 211, .06);
+      background-image: linear-gradient(to top right, transparent calc(50% - .5px), rgba(234, 228, 211, .13) 50%, rgba(234, 228, 211, .13) calc(50% + .5px), transparent calc(50% + .5px))
+    }
+
+    .img-tag {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+      font: 600 .56rem/1 var(--sans);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: #E9DFC6;
+      background: rgba(8, 14, 23, .82);
+      border: 1px solid rgba(197, 162, 89, .5);
+      padding: .38rem .55rem;
+      pointer-events: none
+    }
+
+    .photo {
+      border: 1px solid var(--hair);
+      background: var(--secbg);
+      padding: 6px
+    }
+
+    .photo figcaption {
+      font: italic 500 .82rem var(--serif);
+      color: var(--fg-soft);
+      margin-top: .5rem;
+      padding: 0 2px
+    }
+
+    .a-11 {
+      aspect-ratio: 1/1
+    }
+
+    .a-43 {
+      aspect-ratio: 4/3
+    }
+
+    .a-45 {
+      aspect-ratio: 4/5
+    }
+
+    .a-32 {
+      aspect-ratio: 3/2
+    }
+
+    .a-169 {
+      aspect-ratio: 16/9
+    }
+
+    .a-219 {
+      aspect-ratio: 21/9
+    }
+
+    /* typography */
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -.012em;
+      color: var(--fg)
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 4.9vw, 4rem)
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3.3vw, 2.7rem);
+      margin-bottom: 1.1rem
+    }
+
+    h1 em,
+    h2 em {
+      font-style: italic;
+      font-weight: 430;
+      color: var(--accent)
+    }
+
+    .lede {
+      font-size: 1.11rem;
+      color: var(--fg-soft);
+      max-width: 37em
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      font: 600 .7rem/1 var(--sans);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.6rem
+    }
+
+    .sec-head {
+      display: flex;
+      align-items: center;
+      gap: .9rem;
+      margin-bottom: 2rem
+    }
+
+    .sec-no {
+      font: 600 .72rem/1 var(--sans);
+      letter-spacing: .16em;
+      color: var(--accent)
+    }
+
+    .sec-label {
+      font: 600 .72rem/1 var(--sans);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--fg-soft)
+    }
+
+    .dia {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      transform: rotate(45deg);
+      flex: none
+    }
+
+    /* buttons & links */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .65rem;
+      font: 600 .93rem var(--sans);
+      letter-spacing: .02em;
+      padding: .95rem 1.55rem;
+      border-radius: 2px;
+      text-decoration: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: background .25s, border-color .25s, color .25s
+    }
+
+    .btn svg {
+      transition: transform .25s
+    }
+
+    .btn:hover svg {
+      transform: translateX(4px)
+    }
+
+    .btn-gold {
+      background: var(--brass);
+      color: #12202E
+    }
+
+    .btn-gold:hover {
+      background: #D6B26A
+    }
+
+    .btn-ghost {
+      border-color: rgba(234, 228, 211, .4);
+      color: #EAE4D3
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--brass);
+      color: var(--brass)
+    }
+
+    .arrowlink {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font: 600 .93rem var(--sans);
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(138, 108, 51, .45);
+      padding-bottom: .25rem
+    }
+
+    .bg-deep .arrowlink,
+    .bg-navy .arrowlink {
+      border-bottom-color: rgba(197, 162, 89, .45)
+    }
+
+    .arrowlink svg {
+      transition: transform .25s
+    }
+
+    .arrowlink:hover {
+      border-bottom-color: currentColor
+    }
+
+    .arrowlink:hover svg {
+      transform: translateX(4px)
+    }
+
+    /* ---------- nav ---------- */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(10, 17, 27, .92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(234, 228, 211, .12)
+    }
+
+    .nav-in {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+      height: 66px
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      line-height: 1.15
+    }
+
+    .brand .b1 {
+      font: 600 1.28rem var(--serif);
+      color: #EAE4D3
+    }
+
+    .brand .b2 {
+      font: 600 .56rem var(--sans);
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-top: 2px
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.55rem;
+      margin-left: auto
+    }
+
+    .nav-links a,
+    .nav-drop a {
+      font: 600 .76rem var(--sans);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #C4BEAC;
+      text-decoration: none;
+      padding: .3rem 0
+    }
+
+    .nav-links a:hover,
+    .nav-links a.cur,
+    .nav-drop a:hover {
+      color: var(--brass)
+    }
+
+    .nav-phone {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font: 600 .86rem var(--sans);
+      color: #EAE4D3;
+      text-decoration: none;
+      white-space: nowrap
+    }
+
+    .nav-phone:hover {
+      color: var(--brass)
+    }
+
+    .nav-phone svg {
+      color: var(--brass)
+    }
+
+    .menu-btn {
+      display: none;
+      font: 600 .74rem var(--sans);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #EAE4D3;
+      background: none;
+      border: 1px solid rgba(234, 228, 211, .35);
+      border-radius: 2px;
+      padding: .5rem .9rem;
+      cursor: pointer
+    }
+
+    .nav-drop {
+      display: none;
+      flex-direction: column;
+      gap: .2rem;
+      padding: .6rem 0 1.2rem;
+      border-top: 1px solid rgba(234, 228, 211, .1)
+    }
+
+    .nav-drop a {
+      display: block;
+      padding: .55rem 0;
+      border-bottom: 1px solid rgba(234, 228, 211, .08)
+    }
+
+    .nav-drop .nav-phone {
+      margin-top: 1rem;
+      font-size: .95rem
+    }
+
+    /* ---------- hero ---------- */
+    /* the background: a full-bleed site photo held at low opacity under the navy */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      overflow: hidden;
+      pointer-events: none
+    }
+
+    .hero-bg img {
+      filter: sepia(.22) saturate(.85) contrast(1.05) brightness(.85);
+      transition: opacity 1s ease
+    }
+
+    .hero-bg img.loaded {
+      opacity: .15
+    }
+
+    .hero-bg .img-tag {
+      top: auto;
+      left: auto;
+      bottom: 12px;
+      right: 12px
+    }
+
+    .hero .wrap {
+      position: relative;
+      z-index: 2
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 7fr 5fr;
+      gap: clamp(2.2rem, 6vw, 5rem);
+      align-items: start
+    }
+
+    .hero h1 {
+      margin-bottom: 1.4rem;
+      max-width: 12em
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem;
+      margin-top: 2.1rem
+    }
+
+    .proofline {
+      margin-top: 2.7rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--hair);
+      max-width: 46ch
+    }
+
+    .proofline .pl-k {
+      display: block;
+      font: 600 .66rem var(--sans);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .45rem
+    }
+
+    .proofline p {
+      font-size: .95rem;
+      color: var(--fg-soft)
+    }
+
+    .hero-photo {
+      position: relative
+    }
+
+    .hero-photo .main {
+      aspect-ratio: 4/5
+    }
+
+    .hero-inset {
+      position: absolute;
+      left: -22px;
+      bottom: 36px;
+      width: 35%;
+      border: 5px solid var(--cream);
+      box-shadow: 0 12px 28px rgba(4, 9, 16, .5);
+      z-index: 3
+    }
+
+    .hero-inset img {
+      height: auto
+    }
+
+    .hero-photo>figcaption {
+      font: italic 500 .9rem var(--serif);
+      color: var(--fg-soft);
+      margin-top: .95rem;
+      max-width: 38ch
+    }
+
+    .ph-note {
+      font: 600 .58rem var(--sans);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #8F8975;
+      margin-top: .7rem
+    }
+
+    .hero-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 2.2rem;
+      margin-top: clamp(3rem, 7vw, 5rem);
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--hair);
+      font: 600 .68rem var(--sans);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--fg-soft)
+    }
+
+    /* ---------- specialism ---------- */
+    .spec-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: clamp(2.4rem, 5.5vw, 4.6rem);
+      align-items: start
+    }
+
+    .spec-grid .lede {
+      margin-bottom: 1.8rem
+    }
+
+    .complist {
+      border-top: 1px solid var(--hair)
+    }
+
+    .comp {
+      display: grid;
+      grid-template-columns: 2.7rem 1fr;
+      gap: 1rem;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--hair);
+      align-items: start
+    }
+
+    .comp .rn {
+      font: italic 500 1rem var(--serif);
+      color: var(--accent);
+      padding-top: .15rem
+    }
+
+    .comp p {
+      font-size: .97rem;
+      color: var(--fg)
+    }
+
+    .spec-meta {
+      margin: 1.7rem 0 1.5rem;
+      font-size: .95rem;
+      color: var(--fg-soft)
+    }
+
+    .spec-meta strong {
+      color: var(--accent);
+      font-weight: 600
+    }
+
+    .filmstrip-t {
+      font: 600 .66rem var(--sans);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 2.4rem 0 .9rem
+    }
+
+    .filmstrip {
+      display: flex;
+      gap: .7rem;
+      overflow-x: auto;
+      padding-bottom: .6rem;
+      scroll-snap-type: x proximity;
+      scrollbar-width: thin
+    }
+
+    .filmstrip figure {
+      flex: 0 0 auto;
+      scroll-snap-align: start
+    }
+
+    .filmstrip .ph-img {
+      height: 150px
+    }
+
+    .filmstrip figcaption {
+      font: italic 500 .78rem var(--serif);
+      color: var(--fg-soft);
+      margin-top: .45rem;
+      max-width: 20ch
+    }
+
+    .sheet-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch
+    }
+
+    #towerSheet {
+      min-width: 500px;
+      max-width: 540px;
+      width: 100%;
+      margin-inline: auto
+    }
+
+    .fig-cap {
+      font: italic 500 .92rem var(--serif);
+      color: var(--fg-soft);
+      text-align: center;
+      margin-top: 1.1rem;
+      max-width: 46ch;
+      margin-inline: auto
+    }
+
+    /* ---------- services ledger ---------- */
+    .services .lede {
+      margin-bottom: 2.6rem
+    }
+
+    .ledger {
+      border-top: 1px solid var(--hair)
+    }
+
+    .lrow {
+      display: grid;
+      grid-template-columns: 3rem minmax(0, 1fr) 112px;
+      gap: .2rem 1.5rem;
+      padding: 1.7rem .4rem;
+      border-bottom: 1px solid var(--hair);
+      text-decoration: none;
+      color: inherit;
+      transition: background .25s
+    }
+
+    .lrow:hover {
+      background: rgba(138, 108, 51, .06)
+    }
+
+    .lrow .no {
+      font: 600 .78rem var(--sans);
+      letter-spacing: .1em;
+      color: var(--accent);
+      padding-top: .45rem
+    }
+
+    .lrow h3 {
+      font: 500 1.42rem/1.15 var(--serif);
+      margin-bottom: .4rem
+    }
+
+    .lrow .lbody p {
+      color: var(--fg-soft);
+      max-width: 52ch;
+      font-size: .97rem
+    }
+
+    .lthumb {
+      grid-column: 3;
+      grid-row: 1
+    }
+
+    .lthumb .ph-img {
+      width: 112px
+    }
+
+    .lrow .range {
+      grid-column: 3;
+      grid-row: 2;
+      font: 600 .92rem var(--sans);
+      color: var(--accent);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+      text-align: right;
+      padding-top: .6rem
+    }
+
+    .rowgo {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      font: 600 .68rem var(--sans);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-top: .85rem;
+      opacity: 0;
+      transition: opacity .25s
+    }
+
+    .lrow:hover .rowgo,
+    .lrow:focus-visible .rowgo {
+      opacity: 1
+    }
+
+    .ledger-note {
+      margin-top: 1.6rem;
+      font-size: .88rem;
+      color: var(--fg-soft);
+      max-width: 52ch
+    }
+
+    /* ---------- proof band ---------- */
+    .proof .lede {
+      margin-bottom: 2.6rem;
+      max-width: 56ch
+    }
+
+    .slots {
+      display: grid;
+      grid-template-columns: 235px 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem
+    }
+
+    .slot {
+      border: 1px dashed rgba(36, 41, 48, .42);
+      padding: 1.6rem;
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      min-height: 200px
+    }
+
+    .slot .ghost {
+      font: italic 400 2.7rem/1 var(--serif);
+      color: rgba(138, 108, 51, .55);
+      margin-bottom: auto
+    }
+
+    .slot .sl-t {
+      font: 600 .66rem var(--sans);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--fg)
+    }
+
+    .slot .sl-s {
+      font-size: .88rem;
+      color: var(--fg-soft)
+    }
+
+    .accredit {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px dashed rgba(36, 41, 48, .42)
+    }
+
+    .accredit .cell {
+      padding: 1.35rem 1.5rem
+    }
+
+    .accredit .cell+.cell {
+      border-left: 1px dashed rgba(36, 41, 48, .42)
+    }
+
+    .lg-slot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 70px;
+      height: 38px;
+      border: 1px dashed rgba(36, 41, 48, .35);
+      font: 600 .55rem var(--sans);
+      letter-spacing: .22em;
+      color: var(--fg-soft);
+      margin-bottom: .85rem
+    }
+
+    .accredit .cell strong {
+      display: block;
+      font: 600 .7rem var(--sans);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--fg);
+      margin-bottom: .3rem
+    }
+
+    .accredit .cell p {
+      font-size: .85rem;
+      color: var(--fg-soft)
+    }
+
+    .accredit-note {
+      margin-top: 1rem;
+      font-size: .88rem;
+      color: var(--fg-soft)
+    }
+
+    /* ---------- case studies ---------- */
+    .cases .lede {
+      margin-bottom: 1rem
+    }
+
+    .case {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: clamp(1.8rem, 4.5vw, 4.2rem);
+      padding: clamp(2.4rem, 6vw, 4.2rem) 0;
+      border-top: 1px solid var(--hair)
+    }
+
+    .case:first-of-type {
+      border-top: none;
+      padding-top: 1rem
+    }
+
+    .case-no {
+      font: 500 2.9rem/1 var(--serif);
+      color: rgba(138, 108, 51, .5)
+    }
+
+    .case h3 {
+      font-size: clamp(1.45rem, 2.6vw, 2rem);
+      margin: .6rem 0 0
+    }
+
+    .case .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem 1.3rem;
+      font: 600 .7rem var(--sans);
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: .9rem 0 1.9rem
+    }
+
+    .narr {
+      display: grid;
+      gap: 1.35rem
+    }
+
+    .nb-t {
+      font: 600 .66rem var(--sans);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .4rem
+    }
+
+    .narr p {
+      color: var(--fg);
+      max-width: 58ch
+    }
+
+    .cpair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .7rem;
+      margin-bottom: .7rem
+    }
+
+    .cwide .ph-img {
+      aspect-ratio: 21/9
+    }
+
+    /* ---------- interlude ---------- */
+    .interlude-sec {
+      padding: 0;
+      background: var(--navy-deep)
+    }
+
+    .interlude {
+      position: relative
+    }
+
+    .interlude .ph-img {
+      aspect-ratio: 21/9;
+      max-height: 520px;
+      width: 100%
+    }
+
+    .inter-cap {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(8, 14, 23, .8);
+      padding: 1rem clamp(1.2rem, 5vw, 3rem);
+      display: flex;
+      flex-wrap: wrap;
+      gap: .2rem 1.8rem;
+      align-items: baseline;
+      z-index: 2
+    }
+
+    .inter-cap .ic-t {
+      font: italic 500 1.02rem var(--serif);
+      color: #EAE4D3
+    }
+
+    .inter-cap .ic-s {
+      font: 600 .6rem var(--sans);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: #B9B2A0
+    }
+
+    /* ---------- team ---------- */
+    .team-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      gap: clamp(2.4rem, 5.5vw, 5rem);
+      align-items: start
+    }
+
+    .team-grid .body-copy {
+      font-size: 1.01rem;
+      color: var(--fg);
+      max-width: 56ch;
+      margin-bottom: 2.4rem
+    }
+
+    .team-photo {
+      position: relative;
+      margin-right: 1.2rem
+    }
+
+    .team-inset {
+      position: absolute;
+      right: -14px;
+      bottom: -14px;
+      width: 30%;
+      border: 5px solid var(--navy);
+      box-shadow: 0 12px 28px rgba(4, 9, 16, .5);
+      z-index: 3
+    }
+
+    .team-inset img {
+      height: auto
+    }
+
+    .team-photo>figcaption {
+      font: italic 500 .9rem var(--serif);
+      color: var(--fg-soft);
+      margin-top: 2rem;
+      max-width: 44ch
+    }
+
+    .chr {
+      border-top: 1px solid var(--hair)
+    }
+
+    .chr-row {
+      display: grid;
+      grid-template-columns: 4.6rem 1fr;
+      gap: 1.2rem;
+      padding: 1.05rem 0;
+      border-bottom: 1px solid var(--hair)
+    }
+
+    .chr-y {
+      font: 500 1.05rem var(--serif);
+      color: var(--accent)
+    }
+
+    .chr-row p {
+      font-size: .94rem;
+      color: var(--fg-soft);
+      padding-top: .15rem
+    }
+
+    /* ---------- areas ---------- */
+    .areas-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      gap: clamp(2.4rem, 5.5vw, 4.6rem);
+      align-items: center
+    }
+
+    .areas-grid .lede {
+      margin-top: .4rem
+    }
+
+    .map-box {
+      border: 1px solid var(--hair);
+      padding: 1.1rem;
+      background: rgba(255, 255, 255, .35)
+    }
+
+    .map-cap {
+      font: italic 500 .88rem var(--serif);
+      color: var(--fg-soft);
+      margin-top: .7rem
+    }
+
+    /* ---------- contact ---------- */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: clamp(2.4rem, 6vw, 5.2rem);
+      align-items: start
+    }
+
+    .field {
+      margin-bottom: 1.35rem
+    }
+
+    .field label {
+      display: block;
+      font: 600 .68rem var(--sans);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .5rem
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      background: var(--cream);
+      color: #242930;
+      border: 1px solid transparent;
+      border-radius: 2px;
+      padding: .85rem 1rem;
+      font: 400 1rem var(--sans);
+      transition: border-color .25s
+    }
+
+    .field textarea {
+      min-height: 140px;
+      resize: vertical
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      outline: none;
+      border-color: var(--brass)
+    }
+
+    .ferr {
+      font: 600 .7rem var(--sans);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #D9906A;
+      margin-top: .45rem
+    }
+
+    .demo-note {
+      font-size: .8rem;
+      color: #8B8574;
+      margin-top: 1.2rem
+    }
+
+    @keyframes flash {
+      0% {
+        border-color: var(--brass);
+        box-shadow: 0 0 0 3px rgba(197, 162, 89, .3)
+      }
+
+      100% {
+        border-color: transparent;
+        box-shadow: 0 0 0 0 rgba(197, 162, 89, 0)
+      }
+    }
+
+    .flash {
+      animation: flash 1.5s ease
+    }
+
+    .sent {
+      border: 1px solid rgba(197, 162, 89, .5);
+      padding: 2.2rem 2rem
+    }
+
+    .sent h3 {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      font-size: 1.5rem;
+      margin-bottom: .8rem
+    }
+
+    .sent h3 svg {
+      color: var(--brass);
+      flex: none
+    }
+
+    .sent p {
+      color: var(--fg-soft);
+      margin-bottom: 1.4rem
+    }
+
+    .sent button {
+      background: none;
+      border: none;
+      font: 600 .8rem var(--sans);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--brass);
+      cursor: pointer;
+      border-bottom: 1px solid rgba(197, 162, 89, .5);
+      padding: 0 0 .25rem
+    }
+
+    .yard-photo {
+      margin-bottom: 2rem
+    }
+
+    .direct {
+      display: grid;
+      gap: 1.8rem
+    }
+
+    .direct .block {
+      border-top: 1px solid var(--hair);
+      padding-top: 1.5rem
+    }
+
+    .direct .dk {
+      font: 600 .68rem var(--sans);
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .55rem
+    }
+
+    .direct .big-phone {
+      font: 500 2rem/1.2 var(--serif);
+      color: var(--fg);
+      text-decoration: none
+    }
+
+    .direct .big-phone:hover {
+      color: var(--brass)
+    }
+
+    .direct .block p {
+      font-size: .93rem;
+      color: var(--fg-soft);
+      margin-top: .5rem
+    }
+
+    /* ---------- footer ---------- */
+    .foot-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.4rem 3.5rem;
+      align-items: flex-start;
+      justify-content: space-between
+    }
+
+    .foot-brand .b1 {
+      font: 600 1.5rem var(--serif);
+      color: var(--fg)
+    }
+
+    .foot-brand .b2 {
+      font: 600 .58rem var(--sans);
+      letter-spacing: .24em;
+      text-transform: uppercase;
+      color: var(--brass);
+      margin-top: .3rem;
+      display: block
+    }
+
+    .foot-links {
+      display: grid;
+      gap: .55rem
+    }
+
+    .foot-links a {
+      font: 600 .74rem var(--sans);
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: #C4BEAC;
+      text-decoration: none
+    }
+
+    .foot-links a:hover {
+      color: var(--brass)
+    }
+
+    .foot-note {
+      font-size: .85rem;
+      color: var(--fg-soft);
+      max-width: 40ch
+    }
+
+    .foot-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2.8rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--hair);
+      font-size: .8rem;
+      color: var(--fg-soft)
+    }
+
+    .foot-bottom a {
+      color: var(--fg-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      text-decoration: none
+    }
+
+    .foot-bottom a:hover {
+      color: var(--brass)
+    }
+
+    /* ---------- motion ---------- */
+    .js [data-rev] {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .7s ease, transform .7s cubic-bezier(.22, .61, .36, 1);
+      transition-delay: var(--d, 0ms)
+    }
+
+    .js .rev-in {
+      opacity: 1;
+      transform: none
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      html {
+        scroll-behavior: auto
+      }
+
+      .js [data-rev] {
+        opacity: 1;
+        transform: none;
+        transition: none
+      }
+
+      .hero-bg img {
+        transition: none
+      }
+    }
+
+    /* ---------- breakpoints ---------- */
+    @media (max-width:1080px) {
+
+      .spec-grid,
+      .team-grid,
+      .areas-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    @media (max-width:940px) {
+      .hero-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-photo {
+        max-width: 440px
+      }
+
+      .hero-inset {
+        left: -8px;
+        bottom: 28px;
+        width: 34%;
+        border-width: 4px
+      }
+    }
+
+    @media (max-width:900px) {
+
+      .contact-grid,
+      .case {
+        grid-template-columns: 1fr
+      }
+
+      .case .cimgs {
+        order: 2;
+        margin-top: .5rem
+      }
+    }
+
+    @media (max-width:860px) {
+      .nav-links {
+        display: none
+      }
+
+      .menu-btn {
+        display: block;
+        margin-left: auto
+      }
+
+      .nav-phone {
+        margin-left: 0
+      }
+
+      .nav.open .nav-drop {
+        display: flex
+      }
+
+      .slots {
+        grid-template-columns: 1fr
+      }
+
+      .accredit {
+        grid-template-columns: 1fr
+      }
+
+      .accredit .cell+.cell {
+        border-left: none;
+        border-top: 1px dashed rgba(36, 41, 48, .42)
+      }
+    }
+
+    @media (max-width:760px) {
+      .lrow {
+        grid-template-columns: 84px minmax(0, 1fr)
+      }
+
+      .lrow .no {
+        display: none
+      }
+
+      .lthumb {
+        grid-column: 1;
+        grid-row: 1
+      }
+
+      .lthumb .ph-img {
+        width: 84px
+      }
+
+      .lbody {
+        grid-column: 2;
+        grid-row: 1
+      }
+
+      .lrow .range {
+        grid-column: 2;
+        grid-row: 2;
+        text-align: left;
+        padding-top: .7rem
+      }
+
+      .hero-strip {
+        gap: .45rem 1.4rem
+      }
+
+      body {
+        font-size: 15px
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="#top">
+        <span class="b1">Hartley</span>
+        <span class="b2">Building Contractors · Est. 1998</span>
+      </a>
+      <nav class="nav-links" aria-label="Page sections">
+        <a href="#specialism">Specialism</a>
+        <a href="#services">Services</a>
+        <a href="#proof">Proof</a>
+        <a href="#cases">Projects</a>
+        <a href="#team">Family</a>
+        <a href="#areas">Areas</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-phone" href="tel:+441484552190">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path
+            d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z" />
+        </svg>
+        01484 552 190
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navDrop">Menu</button>
+    </div>
+    <div class="wrap nav-drop" id="navDrop">
+      <a href="#specialism">Specialism</a>
+      <a href="#services">Services</a>
+      <a href="#proof">Proof</a>
+      <a href="#cases">Projects</a>
+      <a href="#team">Family</a>
+      <a href="#areas">Areas</a>
+      <a href="#contact">Contact</a>
+      <a class="nav-phone" href="tel:+441484552190">01484 552 190</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ============ HERO ============ -->
+    <section class="bg-navy hero" id="top">
+      <!-- full-bleed background photo, held at low opacity under the navy -->
+      <div class="hero-bg" aria-hidden="true">
+        <img src="https://plus.unsplash.com/premium_photo-1719843507795-585f21debf7f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fGhlcml0YWdlJTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D" width="1600" height="900" alt="">
+        <span class="img-tag">Background · stand-in</span>
+      </div>
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <p class="eyebrow" data-rev><span class="dia"></span>Hartley Building Contractors · Fenwick · Colne Valley
+            </p>
+            <h1 data-rev style="--d:60ms">The builder who's done the job <em>no one else here has.</em></h1>
+            <p class="lede" data-rev style="--d:120ms">A family firm just outside Fenwick, working the Colne Valley
+              since 1998. We repair the church towers and listed walls other builders won't quote for — and we build the
+              everyday jobs to the same standard.</p>
+            <div class="cta-row" data-rev style="--d:180ms">
+              <a class="btn btn-gold" href="#contact">Request a quote
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 6h13M9 1l5 5-5 5" />
+                </svg>
+              </a>
+              <a class="btn btn-ghost" href="tel:+441484552190">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z" />
+                </svg>
+                01484 552 190
+              </a>
+            </div>
+            <div class="proofline" data-rev style="--d:240ms">
+              <span class="pl-k">Last heritage handover</span>
+              <p>St Bartholomew's, Colnebridge — tower and belfry repairs, eleven weeks on the scaffold, handed back on
+                programme and on budget.</p>
+            </div>
+          </div>
+          <figure class="hero-photo" data-rev style="--d:150ms">
+            <div class="photo">
+              <div class="ph-img main">
+                <img src="https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YnVpbGRpbmd8ZW58MHx8MHx8fDA%3D" width="720" height="900"
+                  alt="Stand-in photo: to be replaced with the scaffold-down shot of St Bartholomew's tower from the churchyard path">
+                <span class="img-tag">Photo slot · stand-in</span>
+              </div>
+            </div>
+            <div class="hero-inset">
+              <img src="https://images.unsplash.com/photo-1443527394413-4b820fd08dde?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJ1aWxkaW5nfGVufDB8fDB8fHww" width="400" height="400"
+                alt="Stand-in photo: to be replaced with a close-up of the scaffold against the tower">
+              <span class="img-tag">Stand-in</span>
+            </div>
+            <figcaption>St Bartholomew's, Colnebridge — photographed the morning the scaffold came down, October 2023.
+            </figcaption>
+            <p class="ph-note">Stand-in photography throughout this mock-up — every slot gets a real site photo before
+              launch</p>
+          </figure>
+        </div>
+        <div class="hero-strip" data-rev style="--d:300ms">
+          <span>Est. 1998</span>
+          <span>Family-run — Michael &amp; Tom Hartley</span>
+          <span>Directly employed, no agency labour</span>
+          <span>Church &amp; listed specialists</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 01 · THE SPECIALISM ============ -->
+    <section class="bg-deep" id="specialism">
+      <div class="wrap">
+        <div class="sec-head" data-rev><span class="sec-no">01</span><span class="dia"></span><span
+            class="sec-label">The specialism</span></div>
+        <div class="spec-grid">
+          <div>
+            <h2 data-rev>Churches and listed buildings aren't a sideline. <em>They're a different trade.</em></h2>
+            <p class="lede" data-rev style="--d:80ms">Plenty of builders in this valley will happily quote your
+              extension. Ask them to repoint a tower seventy foot up, match stone to a five-hundred-year-old wall, or
+              work to a faculty and a conservation officer's spec — and the quotes quietly stop coming back. That's the
+              work we're known for, and it's why church committees as far away as Skipton ring a firm from Fenwick.</p>
+            <div class="complist" data-rev style="--d:140ms">
+              <div class="comp"><span class="rn">i.</span>
+                <p>Faculty and listed-building consent handled start to finish — the PCC deals with one builder, not
+                  four.</p>
+              </div>
+              <div class="comp"><span class="rn">ii.</span>
+                <p>Lime mortar and traditional build — not cement patches that hold water in and rot a wall from the
+                  inside.</p>
+              </div>
+              <div class="comp"><span class="rn">iii.</span>
+                <p>Stone sourced and cut to match what's there. Not the nearest thing on a shelf.</p>
+              </div>
+              <div class="comp"><span class="rn">iv.</span>
+                <p>Live churches stay live — services, weddings and funerals uninterrupted while we work.</p>
+              </div>
+            </div>
+            <p class="spec-meta" data-rev style="--d:180ms">Typical heritage contracts: <strong>£18k</strong> for a
+              louvre repair up to <strong>£250k</strong> for a full tower programme.</p>
+            <a class="arrowlink" href="#contact" data-job="A church or listed building" data-rev style="--d:200ms">Talk
+              to us about a heritage building
+              <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M1 6h13M9 1l5 5-5 5" />
+              </svg>
+            </a>
+            <p class="filmstrip-t" data-rev style="--d:220ms">Detail shots off the last tower job</p>
+            <div class="filmstrip" data-rev style="--d:240ms">
+              <figure style="width:190px">
+                <div class="ph-img slotbg-d"><img loading="lazy"
+                    src="https://plus.unsplash.com/premium_photo-1671627499089-be4089da7912?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bG91dnJlc3xlbnwwfHwwfHx8MA%3D%3D" width="380" height="300"
+                    alt="Stand-in photo: new oak belfry louvres"><span class="img-tag">Stand-in</span></div>
+                <figcaption>Oak louvres, framed up</figcaption>
+              </figure>
+              <figure style="width:150px">
+                <div class="ph-img slotbg-d"><img loading="lazy"
+                    src="https://images.unsplash.com/photo-1704750843798-e7655f99a643?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8c3RvbmUlMjBjdXQlMjBidWlsZGluZ3xlbnwwfHwwfHx8MA%3D%3D" width="300" height="300"
+                    alt="Stand-in photo: new stone cut to match the old"><span class="img-tag">Stand-in</span></div>
+                <figcaption>Stone cut to match</figcaption>
+              </figure>
+              <figure style="width:200px">
+                <div class="ph-img slotbg-d"><img loading="lazy"
+                    src="https://images.unsplash.com/photo-1771153607887-3d31f94d763b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGltZSUyMHBhaW50aW5nJTIwYnVpbGRpbmd8ZW58MHx8MHx8fDA%3D" width="400" height="300"
+                    alt="Stand-in photo: lime pointing detail"><span class="img-tag">Stand-in</span></div>
+                <figcaption>Lime pointing, struck flush</figcaption>
+              </figure>
+              <figure style="width:170px">
+                <div class="ph-img slotbg-d"><img loading="lazy"
+                    src="https://picsum.photos/seed/hartley-lead/340/300.jpg" width="340" height="300"
+                    alt="Stand-in photo: dressed lead valley gutter"><span class="img-tag">Stand-in</span></div>
+                <figcaption>Lead valley, dressed</figcaption>
+              </figure>
+            </div>
+          </div>
+          <div>
+            <!-- the deliberate moment: a survey sheet of the last tower we finished -->
+            <div class="sheet-scroll">
+              <svg id="towerSheet" viewBox="0 0 560 700" font-family="Archivo, sans-serif" role="img"
+                aria-label="Annotated elevation drawing of St Bartholomew's church tower showing Hartley's repair scope">
+                <g id="gDraw" fill="none" stroke="#C5A259" stroke-width="1.2" stroke-linecap="round">
+                  <path d="M10 10H550V665H10Z" fill="rgba(234,228,211,.03)" stroke="rgba(234,228,211,.3)"
+                    stroke-width="1" />
+                  <path d="M10 625H550M250 625V665M445 625V665" stroke-width="1" />
+                  <path d="M120 560H440" stroke-width="1.4" />
+                  <path
+                    d="M128 560l-9 9M144 560l-9 9M160 560l-9 9M176 560l-9 9M192 560l-9 9M208 560l-9 9M224 560l-9 9M240 560l-9 9M256 560l-9 9M272 560l-9 9M288 560l-9 9M304 560l-9 9M320 560l-9 9M336 560l-9 9M352 560l-9 9M368 560l-9 9M384 560l-9 9M400 560l-9 9M416 560l-9 9M432 560l-9 9"
+                    stroke-width=".8" opacity=".6" />
+                  <path d="M158 560V528H342V560" />
+                  <path d="M164 528V200M336 528V200" />
+                  <path d="M154 300H346M154 305H346" stroke-width="1" />
+                  <path d="M154 200H346M154 206H346" stroke-width="1" />
+                  <path
+                    d="M160 206v6M174 206v6M188 206v6M202 206v6M216 206v6M230 206v6M244 206v6M258 206v6M272 206v6M286 206v6M300 206v6M314 206v6M328 206v6M342 206v6"
+                    stroke-width=".8" opacity=".55" />
+                  <path d="M158 172V200M342 172V200M158 172H342" stroke-width="1" />
+                  <path
+                    d="M158 144h26v28h-26zM197.5 144h26v28h-26zM237 144h26v28h-26zM276.5 144h26v28h-26zM316 144h26v28h-26z"
+                    stroke-width="1" />
+                  <path
+                    d="M162 144L168 96M180 144L174 96M168 96L171 84L174 96M164 130L168 125M166 112L170 107M178 130L174 125M176 112L172 107"
+                    stroke-width="1" />
+                  <path
+                    d="M320 144L326 96M338 144L332 96M326 96L329 84L332 96M322 130L326 125M324 112L328 107M336 130L332 125M334 112L330 107"
+                    stroke-width="1" />
+                  <path d="M140 560V470L148 460V300" stroke-width="1" />
+                  <path d="M360 560V470L352 460V300" stroke-width="1" />
+                  <path d="M204 512L204 424Q204 372 250 352Q296 372 296 424L296 512" stroke-width="1" />
+                  <path d="M206 452H294M235 452V512M265 452V512" stroke-width="1" />
+                  <path
+                    d="M204 424Q204 404 219 404Q235 404 235 424M235 424Q235 400 250 400Q265 400 265 424M265 424Q265 404 281 404Q296 404 296 424"
+                    stroke-width=".9" opacity=".8" />
+                  <path d="M219 404Q228 372 250 352M281 404Q272 372 250 352" stroke-width=".9" opacity=".8" />
+                  <path d="M196 512H304M200 517H300" stroke-width="1" />
+                  <path d="M232 560V544Q232 528 250 528Q268 528 268 544V560" stroke-width="1" />
+                  <path
+                    d="M189 288V224Q189 208 207 208Q225 208 225 224V288M275 288V224Q275 208 293 208Q311 208 311 224V288"
+                    stroke-width="1" />
+                  <path
+                    d="M191 232h32M191 242h32M191 252h32M191 262h32M191 272h32M191 282h32M277 232h32M277 242h32M277 252h32M277 262h32M277 272h32M277 282h32"
+                    stroke-width=".8" opacity=".6" />
+                </g>
+                <g id="gNotes" fill="none" stroke="#C5A259" stroke-width=".9" stroke-linecap="round" opacity=".85">
+                  <circle cx="342" cy="150" r="2.4" />
+                  <path d="M345 150H410" />
+                  <circle cx="311" cy="246" r="2.4" />
+                  <path d="M314 246H410" />
+                  <circle cx="164" cy="392" r="2.4" />
+                  <path d="M161 392H130" />
+                  <circle cx="158" cy="545" r="2.4" />
+                  <path d="M155 545H130" />
+                  <circle cx="360" cy="505" r="2.4" />
+                  <path d="M363 505H410" />
+                  <path d="M530 560V144M525 560H535M525 144H535" />
+                  <circle cx="505" cy="62" r="11" />
+                  <path d="M505 69V55" />
+                  <path class="fade" d="M505 55l-3.2 5.5h6.4z" fill="#C5A259" stroke="none" />
+                  <path d="M28 596h80v6h-80zM48 596v6M68 596v6M88 596v6" />
+                  <path class="fade" d="M28 596h20v6h-20z" fill="#C5A259" stroke="none" />
+                  <path class="fade" d="M68 596h20v6h-20z" fill="#C5A259" stroke="none" />
+                </g>
+                <g id="gText" fill="#CDB071">
+                  <text font-size="9" letter-spacing=".02em">
+                    <tspan x="418" y="147">PARAPET REBUILT —</tspan>
+                    <tspan x="418" y="159">STONE CUT TO MATCH</tspan>
+                  </text>
+                  <text font-size="9" letter-spacing=".02em">
+                    <tspan x="418" y="243">LOUVRES REBUILT</tspan>
+                    <tspan x="418" y="255">IN ENGLISH OAK</tspan>
+                  </text>
+                  <text font-size="9" letter-spacing=".02em">
+                    <tspan x="418" y="502">BUTTRESS SET-OFFS</tspan>
+                    <tspan x="418" y="514">RE-COPED IN STONE</tspan>
+                  </text>
+                  <text font-size="9" letter-spacing=".02em" text-anchor="end">
+                    <tspan x="124" y="389">REPOINTED IN LIME —</tspan>
+                    <tspan x="124" y="401">NHL 3.5 · 1:2.5</tspan>
+                  </text>
+                  <text font-size="9" letter-spacing=".02em" text-anchor="end">
+                    <tspan x="124" y="542">FOOTINGS INSPECTED —</tspan>
+                    <tspan x="124" y="554">SOUND, NO WORKS</tspan>
+                  </text>
+                  <text transform="rotate(-90 543 352)" x="543" y="352" text-anchor="middle" font-size="10"
+                    letter-spacing=".1em">62 FT TO PARAPET</text>
+                  <text x="505" y="46" text-anchor="middle" font-size="9" letter-spacing=".1em">N</text>
+                  <text x="28" y="590" text-anchor="middle" font-size="7.5">0</text>
+                  <text x="108" y="590" text-anchor="middle" font-size="7.5">40 FT</text>
+                  <text x="130" y="649" text-anchor="middle" font-size="8.5" letter-spacing=".04em">FIG. 1 — WEST TOWER
+                    ELEVATION</text>
+                  <text x="347" y="649" text-anchor="middle" font-size="8.5" letter-spacing=".04em">ST. BARTHOLOMEW'S,
+                    COLNEBRIDGE</text>
+                  <text x="472" y="649" text-anchor="middle" font-size="8.5">1:50</text>
+                  <text x="525" y="643" text-anchor="middle" font-size="8.5">HARTLEY</text>
+                  <text x="525" y="657" text-anchor="middle" font-size="8.5">2023</text>
+                </g>
+              </svg>
+            </div>
+            <p class="fig-cap" data-rev>Fig. 1 — St Bartholomew's, Colnebridge. Drawn and annotated by us; this is the
+              scope we carried out.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 02 · SERVICES ============ -->
+    <section class="bg-cream services" id="services">
+      <div class="wrap">
+        <div class="sec-head" data-rev><span class="sec-no">02</span><span class="dia"></span><span
+            class="sec-label">The rest of the work</span></div>
+        <h2 data-rev>Everything else a good builder does.</h2>
+        <p class="lede" data-rev style="--d:80ms">The heritage work sets our standard. This is the work that pays most
+          of the bills — same yard, same lads, same eye for the finish.</p>
+        <div class="ledger" data-rev style="--d:140ms">
+          <a class="lrow" href="#contact" data-job="Renovations and extensions">
+            <span class="no">01</span>
+            <div class="lbody">
+              <h3>Renovations &amp; extensions</h3>
+              <p>Old valley houses come with old problems — damp, movement, bodged alterations from decades back. We
+                find them, fix them properly, then build the extension that makes the house work.</p>
+              <span class="rowgo">Start an enquiry
+                <svg width="14" height="10" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 6h13M9 1l5 5-5 5" />
+                </svg>
+              </span>
+            </div>
+            <div class="lthumb">
+              <div class="ph-img a-11"><img loading="lazy" src="https://images.unsplash.com/photo-1621983209344-d3152696e84f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG5ldyUyMGJ1aWxkaW5nfGVufDB8fDB8fHww"
+                  width="240" height="240" alt="Stand-in photo: extension reference shot"><span
+                  class="img-tag">Slot</span></div>
+            </div>
+            <span class="range">£30k–£150k</span>
+          </a>
+          <a class="lrow" href="#contact" data-job="A new-build home">
+            <span class="no">02</span>
+            <div class="lbody">
+              <h3>New-build homes</h3>
+              <p>One-off houses and small backland plots, faced in stone where planning expects stone. One contract from
+                groundworks to keys in the door.</p>
+              <span class="rowgo">Start an enquiry
+                <svg width="14" height="10" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 6h13M9 1l5 5-5 5" />
+                </svg>
+              </span>
+            </div>
+            <div class="lthumb">
+              <div class="ph-img a-11"><img loading="lazy" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bmV3JTIwaG91c2V8ZW58MHx8MHx8fDA%3D"
+                  width="240" height="240" alt="Stand-in photo: new-build reference shot"><span
+                  class="img-tag">Slot</span></div>
+            </div>
+            <span class="range">£250k–£900k</span>
+          </a>
+          <a class="lrow" href="#contact" data-job="A commercial fit-out">
+            <span class="no">03</span>
+            <div class="lbody">
+              <h3>Commercial fit-outs</h3>
+              <p>Pubs, shops, cafés and restaurants refitted on a deadline, because your opening date doesn't move.
+                Kitchens taken through to environmental-health spec.</p>
+              <span class="rowgo">Start an enquiry
+                <svg width="14" height="10" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 6h13M9 1l5 5-5 5" />
+                </svg>
+              </span>
+            </div>
+            <div class="lthumb">
+              <div class="ph-img a-11"><img loading="lazy" src="https://images.unsplash.com/photo-1519721909834-c50c17166602?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NDB8fGNvbW1lcmNpYWwlMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D"
+                  width="240" height="240" alt="Stand-in photo: fit-out reference shot"><span
+                  class="img-tag">Slot</span></div>
+            </div>
+            <span class="range">£40k–£300k</span>
+          </a>
+          <a class="lrow" href="#contact" data-job="Groundworks">
+            <span class="no">04</span>
+            <div class="lbody">
+              <h3>Groundworks</h3>
+              <p>Foundations, drainage and hard landscaping — the part you never see, done so you never have to.</p>
+              <span class="rowgo">Start an enquiry
+                <svg width="14" height="10" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 6h13M9 1l5 5-5 5" />
+                </svg>
+              </span>
+            </div>
+            <div class="lthumb">
+              <div class="ph-img a-11"><img loading="lazy" src="https://images.unsplash.com/photo-1776219243449-a71b7f5c1332?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Z3JvdW5kd29yayUyMGhvdXNlfGVufDB8fDB8fHww"
+                  width="240" height="240" alt="Stand-in photo: groundworks reference shot"><span
+                  class="img-tag">Slot</span></div>
+            </div>
+            <span class="range">£15k–£80k</span>
+          </a>
+        </div>
+        <p class="ledger-note" data-rev style="--d:180ms">Bands are indicative, not quotes — the honest figure follows a
+          site visit, in writing. Select any line above to start an enquiry.</p>
+      </div>
+    </section>
+
+    <!-- ============ 03 · PROOF ============ -->
+    <section class="bg-paper proof" id="proof">
+      <div class="wrap">
+        <div class="sec-head" data-rev><span class="sec-no">03</span><span class="dia"></span><span
+            class="sec-label">Independent proof</span></div>
+        <h2 data-rev>The rest of this page is our word. <em>This section shouldn't be.</em></h2>
+        <p class="lede" data-rev style="--d:80ms">A builder bigging himself up on his own website is worth nothing to
+          you. What belongs here is proof you can check yourself — reviews from named clients, marks from real schemes,
+          references you can ring. The slots below are deliberately empty. They'll be filled with exactly that before
+          launch, and not with anything we've written ourselves.</p>
+        <div class="slots" data-rev style="--d:140ms">
+          <div class="slot">
+            <span class="ghost">—</span>
+            <span class="sl-t">Placeholder — review score</span>
+            <span class="sl-s">Aggregate rating and review count, pulled live from a source you can click through and
+              check. Connected at launch; nothing self-reported.</span>
+          </div>
+          <div class="slot">
+            <span class="ghost">&rdquo;</span>
+            <span class="sl-t">Placeholder — testimonial</span>
+            <span class="sl-s">Approx. 50 words from a named, contactable client. First collection: the St Bartholomew's
+              PCC, with their permission.</span>
+          </div>
+          <div class="slot">
+            <span class="ghost">&rdquo;</span>
+            <span class="sl-t">Placeholder — testimonial</span>
+            <span class="sl-s">Domestic and commercial clients — the Old Lock House, the Star &amp; Garter, Mill Yard
+              Mews. Collected on paper, typed with permission.</span>
+          </div>
+        </div>
+        <div class="accredit" data-rev style="--d:180ms">
+          <div class="cell">
+            <span class="lg-slot">Logo</span>
+            <strong>Membership mark</strong>
+            <p>Relevant trade-body membership, current at the time of display.</p>
+          </div>
+          <div class="cell">
+            <span class="lg-slot">Logo</span>
+            <strong>Insurance-backed guarantee</strong>
+            <p>Scheme certificate and number shown alongside the mark.</p>
+          </div>
+          <div class="cell">
+            <span class="lg-slot">Logo</span>
+            <strong>Health &amp; safety scheme</strong>
+            <p>Safety registration, verified and dated.</p>
+          </div>
+        </div>
+        <p class="accredit-note" data-rev style="--d:200ms">Nothing appears in these slots until it's current and
+          checkable — no borrowed logos.</p>
+      </div>
+    </section>
+
+    <!-- ============ 04 · CASE STUDIES ============ -->
+    <section class="bg-cream cases" id="cases">
+      <div class="wrap">
+        <div class="sec-head" data-rev><span class="sec-no">04</span><span class="dia"></span><span
+            class="sec-label">Case studies</span></div>
+        <h2 data-rev>Before and after, <em>told properly.</em></h2>
+        <p class="lede" data-rev style="--d:80ms">Four jobs — what was wrong, what we built, what it's like now. Every
+          photo set runs before, after and a detail from the tools. Value bands, not exact figures: the number you get
+          is the number you sign.</p>
+
+        <article class="case" data-rev>
+          <div class="cimgs">
+            <div class="cpair">
+              <figure class="photo">
+                <div class="ph-img a-43"><img loading="lazy"
+                    src="https://images.unsplash.com/photo-1594632051107-389369e31f56?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHNwYWxsaW5nJTIwcGFyYXBldHxlbnwwfHwwfHx8MA%3D%3D" width="480" height="360"
+                    alt="Stand-in photo: survey shot of the failing tower parapet"><span class="img-tag">Before ·
+                    stand-in</span></div>
+                <figcaption>Survey photo — spalling parapet</figcaption>
+              </figure>
+              <figure class="photo">
+                <div class="ph-img a-43"><img loading="lazy"
+                    src="https://images.unsplash.com/photo-1646608220368-c604d8e8130f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFNjYWZmb2xkJTIwZG93bnxlbnwwfHwwfHx8MA%3D%3D" width="480" height="360"
+                    alt="Stand-in photo: completed tower, scaffold down"><span class="img-tag">After · stand-in</span>
+                </div>
+                <figcaption>Scaffold down, October 2023</figcaption>
+              </figure>
+            </div>
+            <figure class="photo cwide">
+              <div class="ph-img"><img loading="lazy" src="https://images.unsplash.com/photo-1603958327907-2cf4f51422be?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjR8fHNwYWxsaW5nJTIwcGFyYXBldHxlbnwwfHwwfHx8MA%3D%3D"
+                  width="900" height="380" alt="Stand-in photo: new parapet stone against the old"><span
+                  class="img-tag">Detail · stand-in</span></div>
+              <figcaption>New parapet stone against the old — spot the join</figcaption>
+            </figure>
+          </div>
+          <div>
+            <span class="case-no">01</span>
+            <h3>St Bartholomew's tower</h3>
+            <div class="meta"><span>Ecclesiastical</span><span>Colnebridge</span><span>Band £90k–£120k</span><span>11
+                weeks on site</span></div>
+            <div class="narr">
+              <div>
+                <p class="nb-t">The problem</p>
+                <p>The five-yearly survey failed the tower. Belfry louvres rotted through, parapet stone spalling, and
+                  the pointing gone to powder wherever cement had been patched in during the seventies.</p>
+              </div>
+              <div>
+                <p class="nb-t">The work</p>
+                <p>Eleven weeks up the scaffold. Louvres rebuilt in English oak, the parapet taken down stone by stone
+                  and rebuilt with new blocks cut to match the old, and the whole elevation repointed in lime. We
+                  handled the faculty end to end, so the PCC dealt with one builder, not four.</p>
+              </div>
+              <div>
+                <p class="nb-t">The result</p>
+                <p>Handed back on the date in the programme, inside the agreed band. The inspecting architect's
+                  follow-up came back with no remedials, and the bells rang the Sunday after scaffold-down.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case" data-rev>
+          <div class="cimgs">
+            <div class="cpair">
+              <figure class="photo">
+                <div class="ph-img a-43"><img loading="lazy"
+                    src="https://plus.unsplash.com/premium_photo-1738779001849-2fcde92c271b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8a2l0Y2hlbiUyMHlhcmR8ZW58MHx8MHx8fDA%3D" width="480" height="360"
+                    alt="Stand-in photo: the old kitchen yard before the build"><span class="img-tag">Before ·
+                    stand-in</span></div>
+                <figcaption>The kitchen yard, January</figcaption>
+              </figure>
+              <figure class="photo">
+                <div class="ph-img a-43"><img loading="lazy"
+                    src="https://images.unsplash.com/photo-1753717202565-ee088d9871fc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZXh0ZW5zaW9uJTIwYXQlMjBjb21wbGV0aW9ufGVufDB8fDB8fHww" width="480" height="360"
+                    alt="Stand-in photo: the finished rear extension"><span class="img-tag">After · stand-in</span>
+                </div>
+                <figcaption>The extension at completion</figcaption>
+              </figure>
+            </div>
+            <figure class="photo cwide">
+              <div class="ph-img"><img loading="lazy" src="https://images.unsplash.com/photo-1619861609455-4766de6ac74c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFJlY2xhaW1lZCUyMHN0b25lJTIwaG91c2V8ZW58MHx8MHx8fDA%3D"
+                  width="900" height="380" alt="Stand-in photo: reclaimed stone detail on the new wall"><span
+                  class="img-tag">Detail · stand-in</span></div>
+              <figcaption>Reclaimed stone, new wall</figcaption>
+            </figure>
+          </div>
+          <div>
+            <span class="case-no">02</span>
+            <h3>The Old Lock House</h3>
+            <div class="meta"><span>Renovation &amp; extension</span><span>Fenwick</span><span>Band
+                £110k–£150k</span><span>5 months</span></div>
+            <div class="narr">
+              <div>
+                <p class="nb-t">The problem</p>
+                <p>An 1850s weaver's cottage: a kitchen the size of a table, damp climbing two walls, and a back yard
+                  the family crossed the house to avoid.</p>
+              </div>
+              <div>
+                <p class="nb-t">The work</p>
+                <p>Cause first — two failed lintels replaced and the damp traced to its source and dealt with, not
+                  painted over. Then a single-storey extension in stone reclaimed from a demolished outbuilding, giving
+                  a kitchen and family room that open onto the yard.</p>
+              </div>
+              <div>
+                <p class="nb-t">The result</p>
+                <p>Dry through two winters since, and the extension sits so comfortably in the terrace that it reads as
+                  original from the pavement.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case" data-rev>
+          <div class="cimgs">
+            <div class="cpair">
+              <figure class="photo">
+                <div class="ph-img a-43"><img loading="lazy"
+                    src="https://images.unsplash.com/photo-1617546127542-eb0dd8bdd52f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8b2xkJTIwc2VydmVyeSUyMGhvdXNlfGVufDB8fDB8fHww" width="480" height="360"
+                    alt="Stand-in photo: the pub's old servery"><span class="img-tag">Before · stand-in</span></div>
+                <figcaption>The old servery</figcaption>
+              </figure>
+              <figure class="photo">
+                <div class="ph-img a-43"><img loading="lazy"
+                    src="https://images.unsplash.com/photo-1531870095880-cac1a675e830?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8UmVvcGVuaW5nJTIwbmlnaHQlMjBob3VzZXxlbnwwfHwwfHx8MA%3D%3D" width="480" height="360"
+                    alt="Stand-in photo: reopening night at the refitted pub"><span class="img-tag">After ·
+                    stand-in</span></div>
+                <figcaption>Reopening night</figcaption>
+              </figure>
+            </div>
+            <figure class="photo cwide">
+              <div class="ph-img"><img loading="lazy" src="https://plus.unsplash.com/premium_photo-1663133597256-e84899c6e860?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bWlkLWJ1aWxkJTIwaG91c2V8ZW58MHx8MHx8fDA%3D"
+                  width="900" height="380" alt="Stand-in photo: the new kitchen pass mid-service"><span
+                  class="img-tag">Detail · stand-in</span></div>
+              <figcaption>The pass, mid-service</figcaption>
+            </figure>
+          </div>
+          <div>
+            <span class="case-no">03</span>
+            <h3>The Star &amp; Garter</h3>
+            <div class="meta"><span>Commercial fit-out</span><span>Marsh End</span><span>Band £80k–£110k</span><span>9
+                weeks</span></div>
+            <div class="narr">
+              <div>
+                <p class="nb-t">The problem</p>
+                <p>A village pub with a beer garden the kitchen couldn't serve. Tired equipment, a layout that blocked
+                  the pass, and an environmental health report that read like a shopping list.</p>
+              </div>
+              <div>
+                <p class="nb-t">The work</p>
+                <p>A nine-week refit at the back end of the season: new bar, cellar works, and a full stainless kitchen
+                  laid out in the order chefs actually work — fridge to pass to wash-up. The garden stayed open
+                  throughout so trade kept ticking.</p>
+              </div>
+              <div>
+                <p class="nb-t">The result</p>
+                <p>Reopened on the advertised date and cleared the re-inspection at first visit. Friday covers now run
+                  at three times what the old kitchen managed.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="case" data-rev>
+          <div class="cimgs">
+            <div class="cpair">
+              <figure class="photo">
+                <div class="ph-img a-43"><img loading="lazy"
+                    src="https://picsum.photos/seed/hartley-c4-before/480/360.jpg" width="480" height="360"
+                    alt="Stand-in photo: the backland plot at groundwork stage"><span class="img-tag">Before ·
+                    stand-in</span></div>
+                <figcaption>The plot at groundwork stage</figcaption>
+              </figure>
+              <figure class="photo">
+                <div class="ph-img a-43"><img loading="lazy"
+                    src="https://images.unsplash.com/photo-1729044320311-fa64d5130e6e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZHdlbGxpbmdzJTIwaG91c2V8ZW58MHx8MHx8fDA%3D" width="480" height="360"
+                    alt="Stand-in photo: both finished dwellings"><span class="img-tag">After · stand-in</span></div>
+                <figcaption>Both dwellings, finished</figcaption>
+              </figure>
+            </div>
+            <figure class="photo cwide">
+              <div class="ph-img"><img loading="lazy" src="https://images.unsplash.com/photo-1515959182800-919d4a5ad9fd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFZhbGxleSUyMGhvdXNlfGVufDB8fDB8fHww"
+                  width="900" height="380" alt="Stand-in photo: mill stone relaid as facing"><span
+                  class="img-tag">Detail · stand-in</span></div>
+              <figcaption>Mill stone re-laid as facing</figcaption>
+            </figure>
+          </div>
+          <div>
+            <span class="case-no">04</span>
+            <h3>Mill Yard Mews</h3>
+            <div class="meta"><span>New build · two dwellings</span><span>Colnebridge</span><span>Band £380k–£450k
+                each</span><span>14 months</span></div>
+            <div class="narr">
+              <div>
+                <p class="nb-t">The problem</p>
+                <p>A backland plot behind a row of mill cottages — awkward access, a right of way to protect, and a
+                  planning brief that asked for two homes "that belong to the street".</p>
+              </div>
+              <div>
+                <p class="nb-t">The work</p>
+                <p>Two three-bed houses faced in stone reclaimed from the mill outbuilding that stood on the plot —
+                  groundworks, drainage, structure and fit-out under one contract, one site manager, one point of
+                  contact.</p>
+              </div>
+              <div>
+                <p class="nb-t">The result</p>
+                <p>Finished inside fourteen months with no planning hiccups at sign-off, and the street gained two
+                  houses that look like they were always there.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ INTERLUDE ============ -->
+    <section class="interlude-sec" aria-label="View over the Colne Valley">
+      <figure class="interlude">
+        <div class="ph-img slotbg-d">
+          <img src="https://images.unsplash.com/photo-1656205303543-d66c9c23c48c?q=80&w=1032&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" width="1600" height="680"
+            alt="Stand-in photo: the Colne Valley seen from St Bartholomew's parapet">
+          <span class="img-tag">Stand-in</span>
+          <figcaption class="inter-cap">
+            <span class="ic-t">The Colne Valley from St Bartholomew's parapet</span>
+            <span class="ic-s">Stand-in — the real shot gets taken next time the scaffold's up</span>
+          </figcaption>
+        </div>
+      </figure>
+    </section>
+
+    <!-- ============ 05 · THE FAMILY ============ -->
+    <section class="bg-navy team" id="team">
+      <div class="wrap">
+        <div class="sec-head" data-rev><span class="sec-no">05</span><span class="dia"></span><span
+            class="sec-label">The family</span></div>
+        <div class="team-grid">
+          <div>
+            <h2 data-rev>One name on the van <em>since 1998.</em></h2>
+            <p class="body-copy" data-rev style="--d:80ms">Hartley Building Contractors was started by Michael Hartley
+              in 1998 — one Transit, one mixer and a stonemason's apprenticeship behind him, working out of a lock-up in
+              Fenwick. The first jobs were pointing and garden walls. In 2004 a leaking vestry roof at St Bartholomew's
+              put the firm on the diocesan list, and heritage work has been the backbone of it since. Michael's son Tom
+              joined in 2012 after four years with a conservation firm in York, and the two run the jobs together now —
+              one on the tools, one on the paperwork, both reachable on a bad day.</p>
+            <figure class="team-photo" data-rev style="--d:140ms">
+              <div class="photo">
+                <div class="ph-img a-32 slotbg-d">
+                  <img loading="lazy" src="https://images.unsplash.com/photo-1662945863417-2a6cca902d58?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGVhbSUyMHBob3RvJTIwYnVpbGRlcnN8ZW58MHx8MHx8fDA%3D" width="800" height="540"
+                    alt="Stand-in photo: the whole firm outside the yard at Fenwick">
+                  <span class="img-tag">Team photo · stand-in</span>
+                </div>
+              </div>
+              <div class="team-inset">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D" width="360"
+                  height="360" alt="Stand-in photo: founder portrait of Michael Hartley">
+                <span class="img-tag">Stand-in</span>
+              </div>
+              <figcaption>The firm outside the yard, Fenwick — and Michael, who started it in 1998.</figcaption>
+            </figure>
+          </div>
+          <div class="chr" data-rev style="--d:120ms">
+            <div class="chr-row"><span class="chr-y">1998</span>
+              <p>Michael starts the firm. One van, one mixer, pointing and garden walls.</p>
+            </div>
+            <div class="chr-row"><span class="chr-y">2004</span>
+              <p>First church contract: the vestry roof at St Bartholomew's. It led to the next one, and the one after
+                that.</p>
+            </div>
+            <div class="chr-row"><span class="chr-y">2012</span>
+              <p>Tom Hartley joins full-time, four years of conservation experience in York behind him.</p>
+            </div>
+            <div class="chr-row"><span class="chr-y">2018</span>
+              <p>The yard moves to purpose-built premises just outside Fenwick. Eleven on the books, all directly
+                employed.</p>
+            </div>
+            <div class="chr-row"><span class="chr-y">Today</span>
+              <p>Second generation, same standards. Michael runs the heritage jobs, Tom the rest.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 06 · AREAS ============ -->
+    <section class="bg-paper areas" id="areas">
+      <div class="wrap">
+        <div class="sec-head" data-rev><span class="sec-no">06</span><span class="dia"></span><span
+            class="sec-label">Where we work</span></div>
+        <div class="areas-grid">
+          <div>
+            <h2 data-rev>The valley, <em>mostly.</em></h2>
+            <p class="lede" data-rev style="--d:80ms">Fenwick, Colnebridge and Marsh End are home ground — inside that
+              triangle we can be standing in your problem within the half hour. The rest of the Colne Valley is a short
+              run in the van.</p>
+            <p class="lede" data-rev style="--d:120ms">For the right building we'll go further: heritage work has taken
+              us as far as Skipton and Hebden Bridge. Outside the map? Ring and ask. The worst you'll get is an honest
+              no.</p>
+          </div>
+          <div data-rev style="--d:140ms">
+            <div class="map-box">
+              <svg viewBox="0 0 380 260" font-family="Archivo, sans-serif" role="img"
+                aria-label="Sketch map of the Colne Valley showing Fenwick, Colnebridge and Marsh End">
+                <g fill="none" stroke="#8A6C33" stroke-width=".8">
+                  <path d="M12 60Q80 30 150 62T300 58T372 96" opacity=".22" />
+                  <path d="M6 110Q90 84 170 112T330 106T375 140" opacity=".22" />
+                  <path d="M0 160Q80 140 160 168T310 160T370 196" opacity=".22" />
+                </g>
+                <path d="M36 14C60 70 40 130 110 168C160 196 150 226 230 232C300 238 320 214 366 236" fill="none"
+                  stroke="#8A6C33" stroke-width="1.6" />
+                <path d="M95 55C160 28 258 58 298 118C330 168 298 214 244 210C170 205 88 190 62 140C46 108 56 76 95 55Z"
+                  fill="none" stroke="#8A6C33" stroke-width="1" stroke-dasharray="5 4" opacity=".7" />
+                <rect x="88" y="78" width="14" height="14" fill="#8A6C33" />
+                <circle cx="185" cy="135" r="4" fill="#242930" />
+                <circle cx="265" cy="185" r="4" fill="#242930" />
+                <text x="95" y="70" text-anchor="middle" font-size="9" font-weight="600" letter-spacing=".1em"
+                  fill="#242930">FENWICK</text>
+                <text x="95" y="104" text-anchor="middle" font-size="7" letter-spacing=".14em" fill="#8A6C33">— THE YARD
+                  —</text>
+                <text x="185" y="122" text-anchor="middle" font-size="9" font-weight="600" letter-spacing=".1em"
+                  fill="#242930">COLNEBRIDGE</text>
+                <text x="265" y="172" text-anchor="middle" font-size="9" font-weight="600" letter-spacing=".1em"
+                  fill="#242930">MARSH END</text>
+                <text transform="rotate(12 130 206)" x="130" y="206" font-size="8" letter-spacing=".18em"
+                  fill="#8A6C33">RIVER COLNE</text>
+                <text x="374" y="44" text-anchor="end" font-size="7.5" letter-spacing=".14em" fill="#8A6C33">TYPICAL
+                  WORKING AREA</text>
+              </svg>
+            </div>
+            <p class="map-cap">Not to scale — the valley, roughly as the crow flies.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 07 · CONTACT ============ -->
+    <section class="bg-navy contact" id="contact">
+      <div class="wrap">
+        <div class="sec-head" data-rev><span class="sec-no">07</span><span class="dia"></span><span
+            class="sec-label">Contact</span></div>
+        <div class="contact-grid">
+          <div data-rev>
+            <h2>Tell us what's wrong with the building. <em>We'll come and look.</em></h2>
+            <p class="lede" style="margin-bottom:2.2rem">Every quote starts with a site visit — free, and honest. If the
+              job isn't ours, we'll tell you whose it is.</p>
+            <form id="qform" novalidate>
+              <div class="field">
+                <label for="f-name">Your name</label>
+                <input id="f-name" name="name" type="text" autocomplete="name">
+                <p class="ferr" id="e-name" hidden>Give us a name to ask for.</p>
+              </div>
+              <div class="field">
+                <label for="f-phone">Phone</label>
+                <input id="f-phone" name="phone" type="tel" autocomplete="tel">
+                <p class="ferr" id="e-phone" hidden>We ring back — we need a number.</p>
+              </div>
+              <div class="field">
+                <label for="f-email">Email</label>
+                <input id="f-email" name="email" type="email" autocomplete="email">
+                <p class="ferr" id="e-email" hidden>That email doesn't look right.</p>
+              </div>
+              <div class="field">
+                <label for="f-msg">What's the job?</label>
+                <textarea id="f-msg" name="message"
+                  placeholder="e.g. 1890s end terrace, damp on the gable, thinking about an extension…"></textarea>
+                <p class="ferr" id="e-msg" hidden>A line or two about the job, please.</p>
+              </div>
+              <button class="btn btn-gold" type="submit">Request the site visit
+                <svg width="16" height="12" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 6h13M9 1l5 5-5 5" />
+                </svg>
+              </button>
+              <p class="demo-note">Demo note: this form doesn't send anywhere yet — it'll point at the office inbox
+                before launch.</p>
+            </form>
+            <div class="sent" id="sent" hidden tabindex="-1">
+              <h3>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M20 6 9 17l-5-5" />
+                </svg>
+                Thanks, <span id="firstname"></span>.
+              </h3>
+              <p>We've got it. Tom or Michael will ring you back inside one working day — usually sooner. If something's
+                actively falling down, don't wait for us: phone the office now on 01484 552 190.</p>
+              <button type="button" id="againBtn">Send another enquiry</button>
+            </div>
+          </div>
+          <div data-rev style="--d:120ms">
+            <figure class="photo yard-photo">
+              <div class="ph-img a-169 slotbg-d">
+                <img loading="lazy" src="https://images.unsplash.com/photo-1783197677947-12060a1405fe?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGhvdXNlJTIwd2l0aCUyMHlhcmR8ZW58MHx8MHx8fDA%3D" width="640" height="360"
+                  alt="Stand-in photo: the yard at Barrow Lane">
+                <span class="img-tag">Stand-in</span>
+              </div>
+              <figcaption>The yard, Barrow Lane — just outside Fenwick.</figcaption>
+            </figure>
+            <div class="direct">
+              <div class="block">
+                <p class="dk">Prefer to talk</p>
+                <a class="big-phone" href="tel:+441484552190">01484 552 190</a>
+                <p>Mon–Fri 7.30–5.00, Sat 8.00–12.00. If it goes to answerphone we're up a scaffold — leave it, we'll
+                  ring back by teatime.</p>
+              </div>
+              <div class="block">
+                <p class="dk">The yard</p>
+                <p>Barrow Lane, just outside Fenwick. Call in by arrangement — there's usually someone at the bench, but
+                  half of us are generally out looking at somebody's wall.</p>
+              </div>
+              <div class="block">
+                <p class="dk">Church committees</p>
+                <p>Thinking about a quinquennial or a faculty project? Ask us for the St Bartholomew's architect's
+                  contact — a reference you can check beats a paragraph on a website.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-ink">
+    <div class="wrap" style="padding-block:3.4rem 2.4rem">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <span class="b1">Hartley</span>
+          <span class="b2">Building Contractors · Fenwick · Est. 1998</span>
+        </div>
+        <nav class="foot-links" aria-label="Page sections">
+          <a href="#specialism">Specialism</a>
+          <a href="#services">Services</a>
+          <a href="#proof">Proof</a>
+          <a href="#cases">Projects</a>
+          <a href="#team">Family</a>
+          <a href="#areas">Areas</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <p class="foot-note">Photography on this mock-up is stand-in imagery marking every shot — each gets replaced
+          with real site photography before launch. No invented reviews, no fake accreditation, no exact contract
+          figures. That's deliberate.</p>
+      </div>
+      <div class="foot-bottom">
+        <span>© <span id="yr"></span> Hartley Building Contractors · Fenwick, Colne Valley</span>
+        <a href="#top">Back to top
+          <svg width="11" height="11" viewBox="0 0 16 12" fill="none" stroke="currentColor" stroke-width="1.8"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="transform:rotate(-90deg)">
+            <path d="M1 6h13M9 1l5 5-5 5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      document.documentElement.classList.add('js');
+
+      /* ---- images: fade in on load; failed images leave the slot mark showing ---- */
+      document.querySelectorAll('img').forEach(function (im) {
+        function done() { im.classList.add('loaded'); }
+        if (im.complete && im.naturalWidth > 0) { done(); return; }
+        im.addEventListener('load', done);
+        im.addEventListener('error', function () { im.classList.add('failed'); });
+      });
+
+      /* ---- mobile menu ---- */
+      var nav = document.getElementById('nav'), btn = document.getElementById('menuBtn');
+      if (nav && btn) {
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          btn.textContent = open ? 'Close' : 'Menu';
+        });
+        nav.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            nav.classList.remove('open');
+            btn.setAttribute('aria-expanded', 'false');
+            btn.textContent = 'Menu';
+          });
+        });
+      }
+
+      /* ---- reveals on scroll ---- */
+      var revs = document.querySelectorAll('[data-rev]');
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (es) {
+          es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('rev-in'); io.unobserve(e.target); } });
+        }, { threshold: .12 });
+        revs.forEach(function (el) { io.observe(el); });
+      } else { revs.forEach(function (el) { el.classList.add('rev-in'); }); }
+
+      /* ---- nav scroll-spy ---- */
+      var links = [].slice.call(document.querySelectorAll('.nav-links a, .nav-drop a'));
+      if ('IntersectionObserver' in window) {
+        var spy = new IntersectionObserver(function (es) {
+          es.forEach(function (e) {
+            if (e.isIntersecting) {
+              var id = '#' + e.target.id;
+              links.forEach(function (l) { l.classList.toggle('cur', l.getAttribute('href') === id); });
+            }
+          });
+        }, { rootMargin: '-40% 0px -52% 0px' });
+        ['specialism', 'services', 'proof', 'cases', 'team', 'areas', 'contact'].forEach(function (id) {
+          var s = document.getElementById(id); if (s) spy.observe(s);
+        });
+      }
+
+      /* ---- service rows prefill the enquiry ---- */
+      var msg = document.getElementById('f-msg');
+      document.querySelectorAll('[data-job]').forEach(function (el) {
+        el.addEventListener('click', function () {
+          if (!msg) return;
+          msg.value = 'Enquiry about: ' + el.getAttribute('data-job') + '.\n\n';
+          msg.classList.remove('flash'); void msg.offsetWidth; msg.classList.add('flash');
+        });
+      });
+
+      /* ---- the tower drawing: strokes draw themselves in ---- */
+      var sheet = document.getElementById('towerSheet');
+      var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (sheet && !reduce) {
+        var geo = [].slice.call(sheet.querySelectorAll('#gDraw path,#gDraw line,#gDraw circle'));
+        var notes = [].slice.call(sheet.querySelectorAll('#gNotes path,#gNotes line,#gNotes circle'));
+        var texts = [].slice.call(sheet.querySelectorAll('#gText text')).concat([].slice.call(sheet.querySelectorAll('.fade')));
+        function prep(el) {
+          var L = 0; try { L = el.getTotalLength(); } catch (e) { }
+          if (L > 0) { el.style.strokeDasharray = L; el.style.strokeDashoffset = L; }
+          return L;
+        }
+        var lens = [], nlens = [];
+        geo.forEach(function (el, i) { lens[i] = prep(el); });
+        notes.forEach(function (el, i) { nlens[i] = prep(el); });
+        texts.forEach(function (t) { t.style.opacity = 0; });
+        function play(els, lens, base, step) {
+          els.forEach(function (el, i) {
+            var L = lens[i]; if (!(L > 0)) return;
+            el.animate([{ strokeDashoffset: L }, { strokeDashoffset: 0 }],
+              {
+                duration: Math.min(1500, Math.max(420, L * 1.6)), delay: base + i * step,
+                easing: 'cubic-bezier(.45,.05,.35,1)', fill: 'forwards'
+              });
+          });
+        }
+        if ('IntersectionObserver' in window) {
+          var tio = new IntersectionObserver(function (es) {
+            if (es[0].isIntersecting) {
+              tio.disconnect();
+              play(geo, lens, 0, 45);
+              var base = 300 + geo.length * 45;
+              play(notes, nlens, base, 60);
+              texts.forEach(function (t, i) {
+                t.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 600, delay: base + 400 + i * 90, fill: 'forwards' });
+              });
+            }
+          }, { threshold: .3 });
+          tio.observe(sheet);
+        } else {
+          geo.concat(notes).forEach(function (el) { el.style.strokeDashoffset = 0; });
+          texts.forEach(function (t) { t.style.opacity = 1; });
+        }
+      }
+
+      /* ---- enquiry form ---- */
+      var form = document.getElementById('qform');
+      if (form) {
+        var F = { name: ['f-name', 'e-name'], phone: ['f-phone', 'e-phone'], email: ['f-email', 'e-email'], msg: ['f-msg', 'e-msg'] };
+        function bad(k) {
+          var v = document.getElementById(F[k][0]).value.trim();
+          if (k === 'name') return v.length < 2;
+          if (k === 'phone') return !/^[0-9+()\-\s]{7,}$/.test(v);
+          if (k === 'email') return !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
+          return v.length < 10;
+        }
+        form.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var first = null;
+          Object.keys(F).forEach(function (k) {
+            var el = document.getElementById(F[k][0]), err = document.getElementById(F[k][1]), invalid = bad(k);
+            err.hidden = !invalid;
+            el.setAttribute('aria-invalid', invalid ? 'true' : 'false');
+            if (invalid && !first) first = el;
+          });
+          if (first) { first.focus(); return; }
+          var name = document.getElementById('f-name').value.trim().split(/\s+/)[0] || 'there';
+          document.getElementById('firstname').textContent = name;
+          form.hidden = true;
+          var sent = document.getElementById('sent');
+          sent.hidden = false;
+          sent.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+        });
+        var again = document.getElementById('againBtn');
+        if (again) {
+          again.addEventListener('click', function () {
+            form.reset(); form.hidden = false;
+            document.getElementById('sent').hidden = true;
+            ['e-name', 'e-phone', 'e-email', 'e-msg'].forEach(function (id) { document.getElementById(id).hidden = true; });
+            document.getElementById('f-name').focus();
+          });
+        }
+      }
+
+      var yr = document.getElementById('yr');
+      if (yr) yr.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+
+</html>
